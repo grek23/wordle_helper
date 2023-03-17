@@ -97,10 +97,11 @@ def non_location_letter(alpha, loc, L):
     tmp_L = []
     for i in L:
         # print(f"i = {i} and type of i = {type(i)}")
-        if alpha == i[loc - 1]:
-            pass
-        else:
-            tmp_L.append(i)
+        if alpha in i:
+            if alpha == i[loc - 1]:
+                pass
+            else:
+                tmp_L.append(i)
     return tmp_L
 
 
