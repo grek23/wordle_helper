@@ -18,7 +18,8 @@ def contains_letters(letters):
     print(cnt)
 
 # opens the text of all possible 5 letter words
-# loads that into a list L and returns the list
+# loads t1
+# hat into a list L and returns the list
 
 
 def load_wordle():
@@ -139,7 +140,8 @@ def choices():
     print("1 - Enter letters that have been excluded.")
     print("2 - Enter a letter in the wrong location (a,2).")
     print("3 - Enter a letter in the correct location (t,1).")
-    print("4 - Exit")
+    print("4 - Split word list by those that end in s.")
+    print("5 - Exit")
     print()
 
     # respnose wil be a string type 'str'
@@ -192,6 +194,25 @@ def correct_let_loc():
     return [letter, correct_location]
 
 
+def split_on_s(L):
+    end_in_s = []
+    not_end_in_s = []
+
+    for word in L:
+        if word[4] == 's':
+            end_in_s.append(word)
+        else:
+            # print(f"No S at the end words: {word}")
+            not_end_in_s.append(word)
+
+    print("list of words that end in S:")
+    print_word_list(end_in_s)
+
+    print()
+    print("Words that do not end in S:")
+    print_word_list(not_end_in_s)
+
+
 def main():
     print("Welcome to Wordle helper!")
 
@@ -219,10 +240,15 @@ def main():
             pair = correct_let_loc()
             # print(pair)
             L = location_letters(pair[0], pair[1], L)
-        elif response == 0 or response == '4':
+        elif response == '4':
+            split_on_s(L)
+        elif response == 0 or response == '5':
             valid = False
 
-        print_word_list(L)
+        if response == '4':
+            pass
+        else:
+            print_word_list(L)
 
 
 if __name__ == '__main__':
